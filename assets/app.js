@@ -10,6 +10,9 @@
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g,
     (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+  // 연식 그룹 (진행중 필터 — publisher의 _YEAR_GROUPS와 동일 경계)
+  const YEAR_GROUPS = { g2022: [2022, 9999], g1821: [2018, 2021], g1317: [2013, 2017], g2012: [0, 2012] };
+
   function setMeta(count) {
     const m = D.meta || {};
     const el = $("#meta");
@@ -17,7 +20,7 @@
   }
 
   /* ---------------- 진행중 (listings) ---------------- */
-  const LF = { group: "전체", seg: "전체", disc15: false, noFlag: false, soon: false, q: "" };
+  const LF = { group: "전체", seg: "전체", yr: "전체", disc15: false, noFlag: false, soon: false, q: "" };
 
   function listingVisible(it) {
     if (LF.group !== "전체") {
@@ -26,6 +29,10 @@
       if (g !== LF.group) return false;
     }
     if (LF.seg !== "전체" && it.segment !== LF.seg) return false;
+    if (LF.yr !== "전체") {
+      const g = YEAR_GROUPS[LF.yr];
+      if (it.year == null || it.year < g[0] || it.year > g[1]) return false;
+    }
     if (LF.disc15 && !(it.discount_ref >= 0.15)) return false;
     if (LF.noFlag && (it.constraint_flags || []).length) return false;
     if (LF.soon) {
@@ -168,7 +175,26 @@
     $("#c-ratio").textContent = s.ratio_median != null ? (s.ratio_median * 100).toFixed(1) + "%" : "-";
     $("#c-bidders").textContent = s.bidders_avg ?? "-";
     bars($("#m-bars"), s.monthly || []);
-    bars($("#b-bars"), s.bands || []);
+
+    // 연식별 예측할인 분포 — "최근 연식일수록 할인율이 낮다" 가설 검증용
+    const groups = [{ label: "전체", bands: s.bands || [], sample: s.sample || 0, disc_median: null }]
+      .concat(s.year_bands || []);
+    const chipsEl = $("#yg-chips");
+    function showGroup(i) {
+      const g = groups[i];
+      bars($("#b-bars"), g.bands || []);
+      $("#yg-info").textContent = g.label === "전체" ? ""
+        : `표본 ${g.sample}건` + (g.disc_median != null ? ` · 예측할인 중앙값 ${Math.round(g.disc_median * 100)}%` : "");
+      chipsEl.querySelectorAll(".chip").forEach((c, j) => c.classList.toggle("on", j === i));
+    }
+    if (chipsEl) {
+      chipsEl.innerHTML = groups.map((g, i) =>
+        `<button class="chip${i === 0 ? " on" : ""}" type="button">${esc(g.label)}</button>`).join("");
+      chipsEl.querySelectorAll(".chip").forEach((c, i) => c.addEventListener("click", () => showGroup(i)));
+      showGroup(0);
+    } else {
+      bars($("#b-bars"), s.bands || []);
+    }
   }
 
   /* ---------------- 비용참고표 (costs) ---------------- */
