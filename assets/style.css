@@ -78,6 +78,15 @@ th,td{border:1px solid var(--line);padding:8px 10px;text-align:right}
 th{background:#f8fafc;color:var(--sub);font-weight:600}
 td:first-child,th:first-child{text-align:left}
 
+/* 매물 비용내역 (클릭 펼침) */
+.costlink{cursor:pointer}
+.costbox{display:none;margin:10px 0 4px;max-width:420px}
+.costbox.open{display:block}
+.costbox table{margin:0;font-size:13px}
+.costbox td,.costbox th{padding:5px 10px}
+.costbox tr.sum td{font-weight:700;background:#f8fafc}
+.costbox .note{color:var(--mut);font-size:12px;margin:6px 0 0}
+
 /* 도움말 툴팁 (?) — PC 호버 + 모바일 탭(클릭 토글) */
 .help{position:relative;display:inline-flex;align-items:center;justify-content:center;
       width:16px;height:16px;margin:0 2px;padding:0;border:1px solid var(--accent-line);

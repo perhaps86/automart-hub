@@ -60,12 +60,28 @@
     const line = it.low_sample
       ? `최저 ${man(it.min_bid)} · 시세중앙(참고) ${man(it.encar_median)}(표본 ${it.encar_count ?? 0}) · ${km(it.mileage_km)}`
       : `최저 ${man(it.min_bid)} · 기준가(${esc(it.ref_label)}) ${man(it.ref_price)} · 입찰상한 ${man(it.bid_cap)} · ${km(it.mileage_km)}`;
+    const costRows = Object.entries(it.cost_items || {})
+      .map(([k, v]) => `<tr><td>${esc(k)}</td><td>${Number(v).toLocaleString()}원</td></tr>`).join("");
+    const disc = it.discount_ref;
+    const costBox = `<div class="costbox">
+      <table><tbody>
+        <tr><td>최저입찰가</td><td>${(it.min_bid ?? 0).toLocaleString()}원</td></tr>
+        ${costRows}
+        <tr class="sum"><td>부대비용 합계</td><td>${(it.cost_total ?? 0).toLocaleString()}원</td></tr>
+        <tr class="sum"><td>총실구매비용</td><td>${(it.total_cost ?? 0).toLocaleString()}원</td></tr>
+        ${it.ref_price ? `<tr><td>기준가(${esc(it.ref_label)})</td><td>${it.ref_price.toLocaleString()}원</td></tr>
+        <tr class="sum"><td>차익(기준가-총비용)</td><td>${(it.ref_price - (it.total_cost ?? 0)).toLocaleString()}원${disc != null ? ` (${Math.round(disc * 100)}%)` : ""}</td></tr>` : ""}
+      </tbody></table>
+      ${(it.cost_notes || []).map((n) => `<p class="note">※ ${esc(n)}</p>`).join("")}
+      <p class="note">※ 부대비용은 간이 추정 — 정확한 수치는 엑셀에서 항목 수정 가능</p>
+    </div>`;
     return `<li><span class="date">${esc(it.deadline || "마감 미상")}</span>
       <h3>${title}</h3><p class="line">${line}</p>
       <div class="tags">${tags.join("")}</div>
       <p class="src">${esc(it.region || "")}
         <a href="${esc(it.detail_url)}" target="_blank" rel="noopener">automart 상세</a>${
-        it.encar_url ? ` <a href="${esc(it.encar_url)}" target="_blank" rel="noopener">엔카 시세</a>` : ""}</p></li>`;
+        it.encar_url ? ` <a href="${esc(it.encar_url)}" target="_blank" rel="noopener">엔카 시세</a>` : ""}
+        <a class="costlink">비용내역</a></p>${costBox}</li>`;
   }
 
   function renderListings() {
@@ -222,6 +238,14 @@
     const h = e.target.closest(".help");
     document.querySelectorAll(".help.open").forEach((x) => { if (x !== h) x.classList.remove("open"); });
     if (h) h.classList.toggle("open");
+  });
+
+  /* ---------------- 비용내역 펼침 ---------------- */
+  document.addEventListener("click", (e) => {
+    const l = e.target.closest(".costlink");
+    if (!l) return;
+    const box = l.closest("li") && l.closest("li").querySelector(".costbox");
+    if (box) box.classList.toggle("open");
   });
 
   /* ---------------- dispatch ---------------- */

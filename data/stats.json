@@ -26,6 +26,116 @@
    "passed": 0
   }
  ],
+ "year_bands": [
+  {
+   "label": "2022↑",
+   "sample": 0,
+   "bands": [
+    {
+     "label": "10%미만",
+     "won": 0,
+     "passed": 0
+    },
+    {
+     "label": "10~20%",
+     "won": 0,
+     "passed": 0
+    },
+    {
+     "label": "20~30%",
+     "won": 0,
+     "passed": 0
+    },
+    {
+     "label": "30%이상",
+     "won": 0,
+     "passed": 0
+    }
+   ],
+   "disc_median": null
+  },
+  {
+   "label": "2018~2021",
+   "sample": 0,
+   "bands": [
+    {
+     "label": "10%미만",
+     "won": 0,
+     "passed": 0
+    },
+    {
+     "label": "10~20%",
+     "won": 0,
+     "passed": 0
+    },
+    {
+     "label": "20~30%",
+     "won": 0,
+     "passed": 0
+    },
+    {
+     "label": "30%이상",
+     "won": 0,
+     "passed": 0
+    }
+   ],
+   "disc_median": null
+  },
+  {
+   "label": "2013~2017",
+   "sample": 0,
+   "bands": [
+    {
+     "label": "10%미만",
+     "won": 0,
+     "passed": 0
+    },
+    {
+     "label": "10~20%",
+     "won": 0,
+     "passed": 0
+    },
+    {
+     "label": "20~30%",
+     "won": 0,
+     "passed": 0
+    },
+    {
+     "label": "30%이상",
+     "won": 0,
+     "passed": 0
+    }
+   ],
+   "disc_median": null
+  },
+  {
+   "label": "2012↓",
+   "sample": 0,
+   "bands": [
+    {
+     "label": "10%미만",
+     "won": 0,
+     "passed": 0
+    },
+    {
+     "label": "10~20%",
+     "won": 0,
+     "passed": 0
+    },
+    {
+     "label": "20~30%",
+     "won": 0,
+     "passed": 0
+    },
+    {
+     "label": "30%이상",
+     "won": 0,
+     "passed": 0
+    }
+   ],
+   "disc_median": null
+  }
+ ],
  "sample": 0,
  "insufficient": true
 }
