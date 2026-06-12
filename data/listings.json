@@ -610,8 +610,8 @@
    "min_bid": 8000000,
    "ref_price": 13300000,
    "ref_label": "p25",
-   "bid_cap": 9410312,
-   "discount_ref": 0.266766992481203,
+   "bid_cap": 8953466,
+   "discount_ref": 0.229173007518797,
    "encar_median": 15700000,
    "encar_count": 34,
    "trim_label": "디젤 1.6",
@@ -621,9 +621,9 @@
    "segment": "소형",
    "match_score": 100,
    "constraint_flags": [],
-   "repair_addon": 600000,
+   "repair_addon": 1100000,
    "repair_notes": [
-    "수리비가산: 하체이음+누유 = 600,000"
+    "수리비가산: 하체이음+렌트이력+누유 = 1,100,000"
    ],
    "cost_items": {
     "취득세": 560000,
@@ -632,13 +632,13 @@
     "등록대행": 80000,
     "탁송비": 70000,
     "기본정비": 250000,
-    "수리비가산": 600000
+    "수리비가산": 1100000
    },
-   "cost_total": 1751999,
-   "total_cost": 9751999,
+   "cost_total": 2251999,
+   "total_cost": 10251999,
    "cost_notes": [
     "키 유무 미상 — 키 없으면 스마트키 비용 추가(엑셀에서 직접 입력)",
-    "수리비가산: 하체이음+누유 = 600,000"
+    "수리비가산: 하체이음+렌트이력+누유 = 1,100,000"
    ],
    "low_sample": false,
    "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=GMAM012026A6187&carNo=XXXX8026",
@@ -719,48 +719,6 @@
    "low_sample": false,
    "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=GMBM012026A789&carNo=XXXX5408",
    "encar_url": "https://www.encar.com/fc/fc_carsearchlist.do?carType=for#!%7B%22action%22%3A%20%22%28And.Hidden.N._.CarType.N._.Manufacturer.BMW._.ModelGroup.7%EC%8B%9C%EB%A6%AC%EC%A6%88._.Year.range%28202401..202412%29._.Mileage.range%2853234..79851%29.%29%22%2C%20%22toggle%22%3A%20%7B%7D%2C%20%22layer%22%3A%20%22%22%2C%20%22sort%22%3A%20%22ModifiedDate%22%2C%20%22page%22%3A%201%2C%20%22limit%22%3A%2020%7D"
-  },
-  {
-   "deadline": "06/15 (12:00)",
-   "deadline_iso": "2026-06-15T12:00:00",
-   "year": 2023,
-   "model": "그랜저",
-   "min_bid": 16100000,
-   "ref_price": 23000000,
-   "ref_label": "트림",
-   "bid_cap": 17214153,
-   "discount_ref": 0.18420004347826088,
-   "encar_median": 23100000,
-   "encar_count": 60,
-   "trim_label": "가솔린 2.5",
-   "mileage_km": 108526,
-   "region": "SK보관소(천안)",
-   "brand_group": "국산",
-   "segment": "대형",
-   "match_score": 100,
-   "constraint_flags": [],
-   "repair_addon": 600000,
-   "repair_notes": [
-    "수리비가산: 하체이음+누유 = 600,000"
-   ],
-   "cost_items": {
-    "취득세": 1127000,
-    "공채": 32199,
-    "낙찰수수료": 354200,
-    "등록대행": 80000,
-    "탁송비": 70000,
-    "기본정비": 400000,
-    "수리비가산": 600000
-   },
-   "cost_total": 2663399,
-   "total_cost": 18763399,
-   "cost_notes": [
-    "키 유무 미상 — 키 없으면 스마트키 비용 추가(엑셀에서 직접 입력)",
-    "수리비가산: 하체이음+누유 = 600,000"
-   ],
-   "low_sample": false,
-   "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=UPSK022026A482&carNo=XXXX4570",
-   "encar_url": "https://www.encar.com/fc/fc_carsearchlist.do?carType=kor#!%7B%22action%22%3A%20%22%28And.Hidden.N._.CarType.Y._.Manufacturer.%ED%98%84%EB%8C%80._.ModelGroup.%EA%B7%B8%EB%9E%9C%EC%A0%80._.Year.range%28202201..202212%29._.Mileage.range%2886820..130231%29.%29%22%2C%20%22toggle%22%3A%20%7B%7D%2C%20%22layer%22%3A%20%22%22%2C%20%22sort%22%3A%20%22ModifiedDate%22%2C%20%22page%22%3A%201%2C%20%22limit%22%3A%2020%7D"
   },
   {
    "deadline": "06/16 (16:00)",
@@ -963,37 +921,43 @@
    "deadline": "06/15 (12:00)",
    "deadline_iso": "2026-06-15T12:00:00",
    "year": 2023,
-   "model": "K8",
-   "min_bid": 19800000,
-   "ref_price": 24500000,
+   "model": "그랜저",
+   "min_bid": 16100000,
+   "ref_price": 23000000,
    "ref_label": "트림",
-   "bid_cap": 19771577,
-   "discount_ref": 0.09342044897959184,
-   "encar_median": 26400000,
-   "encar_count": 58,
+   "bid_cap": 15843615,
+   "discount_ref": 0.11898265217391304,
+   "encar_median": 23100000,
+   "encar_count": 60,
    "trim_label": "가솔린 2.5",
-   "mileage_km": 72379,
+   "mileage_km": 108526,
    "region": "SK보관소(천안)",
    "brand_group": "국산",
    "segment": "대형",
    "match_score": 100,
    "constraint_flags": [],
-   "repair_addon": 0,
-   "repair_notes": [],
+   "repair_addon": 2100000,
+   "repair_notes": [
+    "수리비가산: 하체이음+하체꺽임+렌트이력+누유 = 2,100,000"
+   ],
    "cost_items": {
-    "취득세": 1386000,
-    "공채": 39599,
-    "낙찰수수료": 435600,
+    "취득세": 1127000,
+    "공채": 32199,
+    "낙찰수수료": 354200,
     "등록대행": 80000,
     "탁송비": 70000,
-    "기본정비": 400000
+    "기본정비": 400000,
+    "수리비가산": 2100000
    },
-   "cost_total": 2411199,
-   "total_cost": 22211199,
-   "cost_notes": [],
+   "cost_total": 4163399,
+   "total_cost": 20263399,
+   "cost_notes": [
+    "키 유무 미상 — 키 없으면 스마트키 비용 추가(엑셀에서 직접 입력)",
+    "수리비가산: 하체이음+하체꺽임+렌트이력+누유 = 2,100,000"
+   ],
    "low_sample": false,
-   "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=UPSK022026A481&carNo=XXXX4568",
-   "encar_url": "https://www.encar.com/fc/fc_carsearchlist.do?carType=kor#!%7B%22action%22%3A%20%22%28And.Hidden.N._.CarType.Y._.Manufacturer.%EA%B8%B0%EC%95%84._.ModelGroup.K8._.Year.range%28202301..202312%29._.Mileage.range%2857903..86854%29.%29%22%2C%20%22toggle%22%3A%20%7B%7D%2C%20%22layer%22%3A%20%22%22%2C%20%22sort%22%3A%20%22ModifiedDate%22%2C%20%22page%22%3A%201%2C%20%22limit%22%3A%2020%7D"
+   "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=UPSK022026A482&carNo=XXXX4570",
+   "encar_url": "https://www.encar.com/fc/fc_carsearchlist.do?carType=kor#!%7B%22action%22%3A%20%22%28And.Hidden.N._.CarType.Y._.Manufacturer.%ED%98%84%EB%8C%80._.ModelGroup.%EA%B7%B8%EB%9E%9C%EC%A0%80._.Year.range%28202201..202212%29._.Mileage.range%2886820..130231%29.%29%22%2C%20%22toggle%22%3A%20%7B%7D%2C%20%22layer%22%3A%20%22%22%2C%20%22sort%22%3A%20%22ModifiedDate%22%2C%20%22page%22%3A%201%2C%20%22limit%22%3A%2020%7D"
   },
   {
    "deadline": "06/15 (12:00)",
@@ -1030,42 +994,6 @@
    "low_sample": false,
    "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=GMST232026A99&carNo=XXXX8943",
    "encar_url": "https://www.encar.com/fc/fc_carsearchlist.do?carType=for#!%7B%22action%22%3A%20%22%28And.Hidden.N._.CarType.N._.Manufacturer.%ED%8F%AC%EB%A5%B4%EC%89%90._.ModelGroup.%EC%B9%B4%EC%9D%B4%EC%97%94._.Year.range%28202501..202512%29._.Mileage.range%289476..14214%29.%29%22%2C%20%22toggle%22%3A%20%7B%7D%2C%20%22layer%22%3A%20%22%22%2C%20%22sort%22%3A%20%22ModifiedDate%22%2C%20%22page%22%3A%201%2C%20%22limit%22%3A%2020%7D"
-  },
-  {
-   "deadline": "06/15 (12:00)",
-   "deadline_iso": "2026-06-15T12:00:00",
-   "year": 2022,
-   "model": "쏘나타",
-   "min_bid": 13000000,
-   "ref_price": 15900000,
-   "ref_label": "트림",
-   "bid_cap": 14046384,
-   "discount_ref": 0.07408811320754717,
-   "encar_median": 21990000,
-   "encar_count": 59,
-   "trim_label": "LPG 2.0",
-   "mileage_km": 47954,
-   "region": "SK보관소(천안)",
-   "brand_group": "국산",
-   "segment": "중형",
-   "match_score": 100,
-   "constraint_flags": [],
-   "repair_addon": 0,
-   "repair_notes": [],
-   "cost_items": {
-    "취득세": 910000,
-    "공채": 25999,
-    "낙찰수수료": 286000,
-    "등록대행": 80000,
-    "탁송비": 70000,
-    "기본정비": 350000
-   },
-   "cost_total": 1721999,
-   "total_cost": 14721999,
-   "cost_notes": [],
-   "low_sample": false,
-   "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=UPSK022026A480&carNo=XXXX4503",
-   "encar_url": "https://www.encar.com/fc/fc_carsearchlist.do?carType=kor#!%7B%22action%22%3A%20%22%28And.Hidden.N._.CarType.Y._.Manufacturer.%ED%98%84%EB%8C%80._.ModelGroup.%EC%8F%98%EB%82%98%ED%83%80._.Year.range%28202201..202212%29._.Mileage.range%2838363..57544%29.%29%22%2C%20%22toggle%22%3A%20%7B%7D%2C%20%22layer%22%3A%20%22%22%2C%20%22sort%22%3A%20%22ModifiedDate%22%2C%20%22page%22%3A%201%2C%20%22limit%22%3A%2020%7D"
   },
   {
    "deadline": "06/15 (12:00)",
@@ -1112,6 +1040,47 @@
   {
    "deadline": "06/15 (12:00)",
    "deadline_iso": "2026-06-15T12:00:00",
+   "year": 2023,
+   "model": "K8",
+   "min_bid": 19800000,
+   "ref_price": 24500000,
+   "ref_label": "트림",
+   "bid_cap": 19314731,
+   "discount_ref": 0.07301228571428571,
+   "encar_median": 26400000,
+   "encar_count": 58,
+   "trim_label": "가솔린 2.5",
+   "mileage_km": 72379,
+   "region": "SK보관소(천안)",
+   "brand_group": "국산",
+   "segment": "대형",
+   "match_score": 100,
+   "constraint_flags": [],
+   "repair_addon": 500000,
+   "repair_notes": [
+    "수리비가산: 렌트이력 = 500,000"
+   ],
+   "cost_items": {
+    "취득세": 1386000,
+    "공채": 39599,
+    "낙찰수수료": 435600,
+    "등록대행": 80000,
+    "탁송비": 70000,
+    "기본정비": 400000,
+    "수리비가산": 500000
+   },
+   "cost_total": 2911199,
+   "total_cost": 22711199,
+   "cost_notes": [
+    "수리비가산: 렌트이력 = 500,000"
+   ],
+   "low_sample": false,
+   "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=UPSK022026A481&carNo=XXXX4568",
+   "encar_url": "https://www.encar.com/fc/fc_carsearchlist.do?carType=kor#!%7B%22action%22%3A%20%22%28And.Hidden.N._.CarType.Y._.Manufacturer.%EA%B8%B0%EC%95%84._.ModelGroup.K8._.Year.range%28202301..202312%29._.Mileage.range%2857903..86854%29.%29%22%2C%20%22toggle%22%3A%20%7B%7D%2C%20%22layer%22%3A%20%22%22%2C%20%22sort%22%3A%20%22ModifiedDate%22%2C%20%22page%22%3A%201%2C%20%22limit%22%3A%2020%7D"
+  },
+  {
+   "deadline": "06/15 (12:00)",
+   "deadline_iso": "2026-06-15T12:00:00",
    "year": 2020,
    "model": "싼타페",
    "min_bid": 17100000,
@@ -1148,6 +1117,47 @@
    "low_sample": false,
    "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=GMAM012026A6180&carNo=XXXX8608",
    "encar_url": "https://www.encar.com/fc/fc_carsearchlist.do?carType=kor#!%7B%22action%22%3A%20%22%28And.Hidden.N._.CarType.Y._.Manufacturer.%ED%98%84%EB%8C%80._.ModelGroup.%EC%8B%BC%ED%83%80%ED%8E%98._.Year.range%28201901..201912%29._.Mileage.range%28101696..152544%29.%29%22%2C%20%22toggle%22%3A%20%7B%7D%2C%20%22layer%22%3A%20%22%22%2C%20%22sort%22%3A%20%22ModifiedDate%22%2C%20%22page%22%3A%201%2C%20%22limit%22%3A%2020%7D"
+  },
+  {
+   "deadline": "06/15 (12:00)",
+   "deadline_iso": "2026-06-15T12:00:00",
+   "year": 2022,
+   "model": "쏘나타",
+   "min_bid": 13000000,
+   "ref_price": 15900000,
+   "ref_label": "트림",
+   "bid_cap": 13589538,
+   "discount_ref": 0.042641572327044026,
+   "encar_median": 21990000,
+   "encar_count": 59,
+   "trim_label": "LPG 2.0",
+   "mileage_km": 47954,
+   "region": "SK보관소(천안)",
+   "brand_group": "국산",
+   "segment": "중형",
+   "match_score": 100,
+   "constraint_flags": [],
+   "repair_addon": 500000,
+   "repair_notes": [
+    "수리비가산: 렌트이력 = 500,000"
+   ],
+   "cost_items": {
+    "취득세": 910000,
+    "공채": 25999,
+    "낙찰수수료": 286000,
+    "등록대행": 80000,
+    "탁송비": 70000,
+    "기본정비": 350000,
+    "수리비가산": 500000
+   },
+   "cost_total": 2221999,
+   "total_cost": 15221999,
+   "cost_notes": [
+    "수리비가산: 렌트이력 = 500,000"
+   ],
+   "low_sample": false,
+   "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=UPSK022026A480&carNo=XXXX4503",
+   "encar_url": "https://www.encar.com/fc/fc_carsearchlist.do?carType=kor#!%7B%22action%22%3A%20%22%28And.Hidden.N._.CarType.Y._.Manufacturer.%ED%98%84%EB%8C%80._.ModelGroup.%EC%8F%98%EB%82%98%ED%83%80._.Year.range%28202201..202212%29._.Mileage.range%2838363..57544%29.%29%22%2C%20%22toggle%22%3A%20%7B%7D%2C%20%22layer%22%3A%20%22%22%2C%20%22sort%22%3A%20%22ModifiedDate%22%2C%20%22page%22%3A%201%2C%20%22limit%22%3A%2020%7D"
   },
   {
    "deadline": "06/15 (12:00)",
@@ -1304,47 +1314,6 @@
   {
    "deadline": "06/15 (12:00)",
    "deadline_iso": "2026-06-15T12:00:00",
-   "year": 2022,
-   "model": "그랜저",
-   "min_bid": 16900000,
-   "ref_price": 19945000,
-   "ref_label": "트림",
-   "bid_cap": 13850854,
-   "discount_ref": -0.04480315868638757,
-   "encar_median": 20745000,
-   "encar_count": 60,
-   "trim_label": "가솔린 2.5",
-   "mileage_km": 132465,
-   "region": "SK보관소(천안)",
-   "brand_group": "국산",
-   "segment": "대형",
-   "match_score": 100,
-   "constraint_flags": [],
-   "repair_addon": 1800000,
-   "repair_notes": [
-    "수리비가산: 미션불량+누유 = 1,800,000"
-   ],
-   "cost_items": {
-    "취득세": 1183000,
-    "공채": 33799,
-    "낙찰수수료": 371800,
-    "등록대행": 80000,
-    "탁송비": 70000,
-    "기본정비": 400000,
-    "수리비가산": 1800000
-   },
-   "cost_total": 3938599,
-   "total_cost": 20838599,
-   "cost_notes": [
-    "수리비가산: 미션불량+누유 = 1,800,000"
-   ],
-   "low_sample": false,
-   "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=UPSK022026A484&carNo=XXXX6778",
-   "encar_url": "https://www.encar.com/fc/fc_carsearchlist.do?carType=kor#!%7B%22action%22%3A%20%22%28And.Hidden.N._.CarType.Y._.Manufacturer.%ED%98%84%EB%8C%80._.ModelGroup.%EA%B7%B8%EB%9E%9C%EC%A0%80._.Year.range%28202201..202212%29._.Mileage.range%28105972..158958%29.%29%22%2C%20%22toggle%22%3A%20%7B%7D%2C%20%22layer%22%3A%20%22%22%2C%20%22sort%22%3A%20%22ModifiedDate%22%2C%20%22page%22%3A%201%2C%20%22limit%22%3A%2020%7D"
-  },
-  {
-   "deadline": "06/15 (12:00)",
-   "deadline_iso": "2026-06-15T12:00:00",
    "year": 2013,
    "model": "A6",
    "min_bid": 4300000,
@@ -1379,6 +1348,47 @@
    "low_sample": false,
    "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=GMAM012026A6178&carNo=XXX0533",
    "encar_url": "https://www.encar.com/fc/fc_carsearchlist.do?carType=for#!%7B%22action%22%3A%20%22%28And.Hidden.N._.CarType.N._.Manufacturer.%EC%95%84%EC%9A%B0%EB%94%94._.ModelGroup.A6._.Year.range%28201301..201312%29._.Mileage.range%28149878..224817%29.%29%22%2C%20%22toggle%22%3A%20%7B%7D%2C%20%22layer%22%3A%20%22%22%2C%20%22sort%22%3A%20%22ModifiedDate%22%2C%20%22page%22%3A%201%2C%20%22limit%22%3A%2020%7D"
+  },
+  {
+   "deadline": "06/15 (12:00)",
+   "deadline_iso": "2026-06-15T12:00:00",
+   "year": 2022,
+   "model": "그랜저",
+   "min_bid": 16900000,
+   "ref_price": 19945000,
+   "ref_label": "트림",
+   "bid_cap": 13394008,
+   "discount_ref": -0.06987209827024317,
+   "encar_median": 20745000,
+   "encar_count": 60,
+   "trim_label": "가솔린 2.5",
+   "mileage_km": 132465,
+   "region": "SK보관소(천안)",
+   "brand_group": "국산",
+   "segment": "대형",
+   "match_score": 100,
+   "constraint_flags": [],
+   "repair_addon": 2300000,
+   "repair_notes": [
+    "수리비가산: 미션불량+렌트이력+누유 = 2,300,000"
+   ],
+   "cost_items": {
+    "취득세": 1183000,
+    "공채": 33799,
+    "낙찰수수료": 371800,
+    "등록대행": 80000,
+    "탁송비": 70000,
+    "기본정비": 400000,
+    "수리비가산": 2300000
+   },
+   "cost_total": 4438599,
+   "total_cost": 21338599,
+   "cost_notes": [
+    "수리비가산: 미션불량+렌트이력+누유 = 2,300,000"
+   ],
+   "low_sample": false,
+   "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=UPSK022026A484&carNo=XXXX6778",
+   "encar_url": "https://www.encar.com/fc/fc_carsearchlist.do?carType=kor#!%7B%22action%22%3A%20%22%28And.Hidden.N._.CarType.Y._.Manufacturer.%ED%98%84%EB%8C%80._.ModelGroup.%EA%B7%B8%EB%9E%9C%EC%A0%80._.Year.range%28202201..202212%29._.Mileage.range%28105972..158958%29.%29%22%2C%20%22toggle%22%3A%20%7B%7D%2C%20%22layer%22%3A%20%22%22%2C%20%22sort%22%3A%20%22ModifiedDate%22%2C%20%22page%22%3A%201%2C%20%22limit%22%3A%2020%7D"
   },
   {
    "deadline": "06/15 (12:00)",
@@ -1426,8 +1436,8 @@
    "min_bid": 17300000,
    "ref_price": 17600000,
    "ref_label": "트림",
-   "bid_cap": 13941309,
-   "discount_ref": -0.11796585227272727,
+   "bid_cap": 12570771,
+   "discount_ref": -0.203193125,
    "encar_median": 18725000,
    "encar_count": 60,
    "trim_label": "가솔린 1.6",
@@ -1437,9 +1447,9 @@
    "segment": "준중형",
    "match_score": 100,
    "constraint_flags": [],
-   "repair_addon": 300000,
+   "repair_addon": 1800000,
    "repair_notes": [
-    "수리비가산: 누유 = 300,000"
+    "수리비가산: 하체꺽임+렌트이력+누유 = 1,800,000"
    ],
    "cost_items": {
     "취득세": 1211000,
@@ -1448,12 +1458,12 @@
     "등록대행": 80000,
     "탁송비": 70000,
     "기본정비": 300000,
-    "수리비가산": 300000
+    "수리비가산": 1800000
    },
-   "cost_total": 2376199,
-   "total_cost": 19676199,
+   "cost_total": 3876199,
+   "total_cost": 21176199,
    "cost_notes": [
-    "수리비가산: 누유 = 300,000"
+    "수리비가산: 하체꺽임+렌트이력+누유 = 1,800,000"
    ],
    "low_sample": false,
    "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=UPSK022026A485&carNo=XXXX6780",
@@ -1467,8 +1477,8 @@
    "min_bid": 9000000,
    "ref_price": 8500000,
    "ref_label": "트림",
-   "bid_cap": 6143397,
-   "discount_ref": -0.21482341176470587,
+   "bid_cap": 5673682,
+   "discount_ref": -0.2736469411764706,
    "encar_median": 8500000,
    "encar_count": 60,
    "trim_label": "가솔린 1.0",
@@ -1478,9 +1488,9 @@
    "segment": "경차",
    "match_score": 100,
    "constraint_flags": [],
-   "repair_addon": 300000,
+   "repair_addon": 800000,
    "repair_notes": [
-    "수리비가산: 하체이음 = 300,000"
+    "수리비가산: 하체이음+렌트이력 = 800,000"
    ],
    "cost_items": {
     "취득세": 360000,
@@ -1489,13 +1499,13 @@
     "등록대행": 80000,
     "탁송비": 70000,
     "기본정비": 200000,
-    "수리비가산": 300000,
+    "수리비가산": 800000,
     "스마트키": 100000
    },
-   "cost_total": 1325999,
-   "total_cost": 10325999,
+   "cost_total": 1825999,
+   "total_cost": 10825999,
    "cost_notes": [
-    "수리비가산: 하체이음 = 300,000"
+    "수리비가산: 하체이음+렌트이력 = 800,000"
    ],
    "low_sample": false,
    "detail_url": "https://www.automart.co.kr/carSearch/carDetail?notNo=UPSK022026A483&carNo=XXXX4599",
