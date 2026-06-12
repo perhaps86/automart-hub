@@ -1,0 +1,85 @@
+/* automart-hub — 라이트 에디토리얼 셸 (참고: SMR 뉴스 허브 스타일) */
+:root{
+  --accent:#2563eb; --accent-bg:#eff6ff; --accent-line:#bfdbfe;
+  --ink:#111827; --sub:#555f6e; --mut:#8b95a1;
+  --line:#e5e7eb; --warn:#b45309; --warn-bg:#fff7ed; --warn-line:#fdba74;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;
+     color:var(--ink);background:#fff;line-height:1.55}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* 상단 내비 */
+.nav{border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:10}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:26px;overflow-x:auto}
+.brand{font-weight:800;font-size:14px;letter-spacing:.4px;padding:15px 0;white-space:nowrap}
+.nav a.tab{color:var(--sub);font-size:14px;padding:15px 2px;border-bottom:2px solid transparent;white-space:nowrap}
+.nav a.tab.active{color:var(--accent);font-weight:700;border-bottom-color:var(--accent)}
+.nav a.tab:hover{text-decoration:none;color:var(--ink)}
+
+/* 페이지 머리 */
+.wrap{max-width:960px;margin:0 auto;padding:36px 20px 80px}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:1.5px}
+h1{margin:6px 0 10px;font-size:30px}
+h2{font-size:18px;margin:34px 0 10px}
+.desc{color:var(--sub);margin:0 0 6px;font-size:15px}
+.meta{color:var(--mut);font-size:13px;margin-bottom:24px}
+
+/* 검색/필터 칩 */
+.search{width:100%;padding:13px 16px;font-size:15px;border:1px solid var(--line);border-radius:10px;margin-bottom:14px}
+.search:focus{outline:2px solid var(--accent);border-color:transparent}
+.filters{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+.chip-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.chip-row .lbl{color:var(--mut);font-size:12px;min-width:34px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 12px;
+      font-size:13px;color:var(--sub);cursor:pointer;font-family:inherit}
+.chip.on{border-color:var(--accent);color:var(--accent);font-weight:700;background:var(--accent-bg)}
+#count{color:var(--mut);font-size:13px;margin-left:auto}
+
+/* 타임라인 리스트 */
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:0 0 30px 24px}
+.tl li::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.tl li.empty{border:0;color:var(--mut);text-align:center;padding:40px 0}
+.tl li.empty::before{display:none}
+.tl .date{color:var(--accent);font-weight:700;font-size:13px}
+.tl h3{margin:2px 0 4px;font-size:17px}
+.tl .line{color:var(--sub);font-size:14px;margin:0 0 8px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.tag{font-size:12px;border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:var(--sub);background:#fafafa}
+.tag.blue{color:var(--accent);border-color:var(--accent-line);background:var(--accent-bg)}
+.tag.warn{color:var(--warn);border-color:var(--warn-line);background:var(--warn-bg)}
+.src{color:var(--mut);font-size:13px}
+.src a{margin-left:8px}
+details.lowsample{margin-top:14px}
+details.lowsample summary{cursor:pointer;color:var(--mut);font-size:14px;padding:8px 0}
+
+/* 통계 */
+.banner{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn);
+        border-radius:10px;padding:10px 14px;font-size:14px;margin-bottom:18px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px}
+.card{border:1px solid var(--line);border-radius:12px;padding:16px}
+.card .k{color:var(--mut);font-size:12px}
+.card .v{font-size:24px;font-weight:800;margin-top:4px}
+.bars{margin:8px 0 10px}
+.bar-row{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13px}
+.bar-row .bl{min-width:64px;color:var(--sub);text-align:right}
+.bar-track{flex:1;display:flex;gap:3px;align-items:center}
+.bar{height:14px;border-radius:4px;background:var(--accent);min-width:2px}
+.bar.gray{background:#cbd5e1}
+.bar-row .bv{color:var(--mut);white-space:nowrap}
+.legend{color:var(--mut);font-size:12px;margin:4px 0 16px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;vertical-align:-1px;margin-right:4px}
+
+/* 표 (비용참고표) */
+table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0 6px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:right}
+th{background:#f8fafc;color:var(--sub);font-weight:600}
+td:first-child,th:first-child{text-align:left}
+
+@media (max-width:640px){
+  h1{font-size:24px}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .tl .line{line-height:1.8}
+}

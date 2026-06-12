@@ -1,0 +1,31 @@
+{
+ "won": 0,
+ "passed": 0,
+ "ratio_median": null,
+ "bidders_avg": null,
+ "monthly": [],
+ "bands": [
+  {
+   "label": "10%미만",
+   "won": 0,
+   "passed": 0
+  },
+  {
+   "label": "10~20%",
+   "won": 0,
+   "passed": 0
+  },
+  {
+   "label": "20~30%",
+   "won": 0,
+   "passed": 0
+  },
+  {
+   "label": "30%이상",
+   "won": 0,
+   "passed": 0
+  }
+ ],
+ "sample": 0,
+ "insufficient": true
+}

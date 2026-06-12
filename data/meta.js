@@ -1,0 +1,1 @@
+window.HUB_DATA=window.HUB_DATA||{};window.HUB_DATA.meta={"generated_at": "2026-06-12 15:35", "listings_count": 6, "results_count": 0};

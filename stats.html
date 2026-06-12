@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>통계 — AUTOMART HUB</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🚗</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="stats">
+<nav class="nav"><div class="nav-inner">
+  <span class="brand">AUTOMART HUB</span>
+  <a class="tab" href="index.html">진행중</a>
+  <a class="tab" href="results.html">입찰결과</a>
+  <a class="tab active" href="stats.html">통계</a>
+  <a class="tab" href="costs.html">비용참고표</a>
+</div></nav>
+<main class="wrap">
+  <div class="eyebrow">STATS</div>
+  <h1>통계 · 보정</h1>
+  <p class="desc">누적 입찰결과로 시세 모델을 검증한다. 낙찰가÷기준가 중앙값이 1.0에 가까울수록 기준가가 정확.</p>
+  <p class="meta" id="meta">-</p>
+  <div class="banner" id="banner" style="display:none"></div>
+  <div class="cards">
+    <div class="card"><div class="k">누적 낙찰</div><div class="v" id="c-won">-</div></div>
+    <div class="card"><div class="k">누적 유찰</div><div class="v" id="c-passed">-</div></div>
+    <div class="card"><div class="k">낙찰가÷기준가 중앙값</div><div class="v" id="c-ratio">-</div></div>
+    <div class="card"><div class="k">평균 입찰자수(낙찰)</div><div class="v" id="c-bidders">-</div></div>
+  </div>
+  <h2>월별 낙찰/유찰</h2>
+  <div class="bars" id="m-bars"></div>
+  <h2>예측할인 구간별 분포 <span style="font-weight:400;color:var(--mut);font-size:13px">(최저가 기준)</span></h2>
+  <div class="bars" id="b-bars"></div>
+  <p class="legend"><i style="background:#2563eb"></i>낙찰 <i style="background:#cbd5e1"></i>유찰</p>
+</main>
+<script src="data/meta.js"></script>
+<script src="data/stats.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

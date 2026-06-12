@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>진행중 매물 — AUTOMART HUB</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🚗</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="listings">
+<nav class="nav"><div class="nav-inner">
+  <span class="brand">AUTOMART HUB</span>
+  <a class="tab active" href="index.html">진행중</a>
+  <a class="tab" href="results.html">입찰결과</a>
+  <a class="tab" href="stats.html">통계</a>
+  <a class="tab" href="costs.html">비용참고표</a>
+</div></nav>
+<main class="wrap">
+  <div class="eyebrow">LISTINGS</div>
+  <h1>진행중 매물</h1>
+  <p class="desc">automart 공매 매물을 엔카 <b>기준가(트림/p25)</b>와 비교해 할인율 순으로 정렬.
+     <b>입찰상한</b>은 낙찰가 분석(표본 p10) 역산값.</p>
+  <p class="meta" id="meta">-</p>
+  <input class="search" id="q" placeholder="모델명 검색 (예: 그랜저, GV80)">
+  <div class="filters">
+    <div class="chip-row"><span class="lbl">분류</span>
+      <button class="chip on" data-k="group" data-v="전체">전체</button>
+      <button class="chip" data-k="group" data-v="국산">국산</button>
+      <button class="chip" data-k="group" data-v="수입">수입</button>
+      <button class="chip" data-k="group" data-v="제네시스">제네시스</button>
+    </div>
+    <div class="chip-row"><span class="lbl">차급</span>
+      <button class="chip on" data-k="seg" data-v="전체">전체</button>
+      <button class="chip" data-k="seg" data-v="경차">경차</button>
+      <button class="chip" data-k="seg" data-v="소형">소형</button>
+      <button class="chip" data-k="seg" data-v="준중형">준중형</button>
+      <button class="chip" data-k="seg" data-v="중형">중형</button>
+      <button class="chip" data-k="seg" data-v="대형">대형</button>
+      <button class="chip" data-k="seg" data-v="SUV대형">SUV대형</button>
+    </div>
+    <div class="chip-row"><span class="lbl">조건</span>
+      <button class="chip" data-k="disc15">할인 15%↑</button>
+      <button class="chip" data-k="noFlag">⚠제약 제외</button>
+      <button class="chip" data-k="soon">마감 24h</button>
+      <span id="count"></span>
+    </div>
+  </div>
+  <ul class="tl" id="list"></ul>
+  <details class="lowsample" id="low-wrap" style="display:none">
+    <summary id="low-sum"></summary>
+    <ul class="tl" id="low-list"></ul>
+  </details>
+</main>
+<script src="data/meta.js"></script>
+<script src="data/listings.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
