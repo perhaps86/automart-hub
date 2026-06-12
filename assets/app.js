@@ -80,7 +80,7 @@
       <div class="tags">${tags.join("")}</div>
       <p class="src">${esc(it.region || "")}
         <a href="${esc(it.detail_url)}" target="_blank" rel="noopener">automart 상세</a>${
-        it.encar_url ? ` <a href="${esc(it.encar_url)}" target="_blank" rel="noopener">엔카 시세</a>` : ""}
+        it.encar_url ? ` <a href="${esc(it.encar_url)}" target="_blank" rel="noopener">엔카 시세${it.encar_count ? `(${it.encar_count}대)` : ""}</a>` : ""}
         <a class="costlink">비용내역</a></p>${costBox}</li>`;
   }
 
