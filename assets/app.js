@@ -191,6 +191,13 @@
       (c.constraint_keywords || []).map((k) => [k]));
   }
 
+  /* ---------------- 도움말 툴팁 (모바일 탭 토글) ---------------- */
+  document.addEventListener("click", (e) => {
+    const h = e.target.closest(".help");
+    document.querySelectorAll(".help.open").forEach((x) => { if (x !== h) x.classList.remove("open"); });
+    if (h) h.classList.toggle("open");
+  });
+
   /* ---------------- dispatch ---------------- */
   const inits = { listings: initListings, results: initResults, stats: initStats, costs: initCosts };
   const init = inits[document.body.dataset.page];
