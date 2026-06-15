@@ -123,26 +123,39 @@
   /* ---------------- 입찰결과 (results) ---------------- */
   let RFILTER = "전체";
 
+  function verdictBadge(v) {
+    if (!v || !v.level) return "";
+    const map = { cheap: ["싸게", "v-cheap"], fair: ["적정", "v-fair"], pricey: ["비싸게", "v-pricey"] };
+    const [txt, cls] = map[v.level];
+    return `<span class="tag ${cls}">${txt}</span>`;
+  }
+
   function resultItem(r) {
     const won = r.outcome === "낙찰";
-    let line;
+    const v = won ? r.verdict : null;
+    const badge = verdictBadge(v);
+    let line, sub = "";
     if (won) {
-      const base = r.ref_price || r.encar_median;
-      const baseLabel = r.ref_price ? "기준가" : "시세중앙";
-      const diff = base && r.winning_price != null ? base - r.winning_price : null;
-      line = `낙찰 ${man(r.winning_price)}` +
-        (base ? ` · ${baseLabel} ${man(base)}` : "") +
-        (diff != null ? ` · 차액 ${diff >= 0 ? "+" : "-"}${man(diff)}` : "") +
-        (r.bidder_count ? ` · 입찰 ${r.bidder_count}명` : "");
+      line = `낙찰 ${man(r.winning_price)}` + (r.bidder_count ? ` · 입찰 ${r.bidder_count}명` : "");
+      if (v && v.level) {
+        const warn = v.warnings && v.warnings.length
+          ? ` <span class="warn">⚠${esc(v.warnings.join("·"))}</span>` : "";
+        sub = `총비용 ${man(v.total_cost)} · 시세 p10 ${man(v.p10)} / p25 ${man(v.p25)}${warn}`;
+      } else {
+        sub = r.encar_median
+          ? `시세중앙(참고) ${man(r.encar_median)} · 표본 ${r.encar_count ?? 0} · 판정불가`
+          : "판정불가(데이터 없음)";
+      }
     } else {
       const base = r.ref_price || r.encar_median;
       line = `최저 ${man(r.min_bid_price)}` +
         (base ? ` · ${r.ref_price ? "기준가" : "시세중앙"} ${man(base)}` : "");
     }
     return `<li><span class="date">${esc(r.date || "")}</span>
-      <h3><span class="tag ${won ? "blue" : ""}">${won ? "낙찰" : "유찰"}</span>
+      <h3><span class="tag ${won ? "blue" : ""}">${won ? "낙찰" : "유찰"}</span>${badge ? " " + badge : ""}
         ${r.year ?? ""} ${esc(r.model)}</h3>
       <p class="line">${line}</p>
+      ${sub ? `<p class="line sub">${sub}</p>` : ""}
       <p class="src"><a href="${esc(r.detail_url)}" target="_blank" rel="noopener">automart 상세</a>${
         r.encar_search_url ? ` <a href="${esc(r.encar_search_url)}" target="_blank" rel="noopener">엔카 시세</a>` : ""}</p></li>`;
   }

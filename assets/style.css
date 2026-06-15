@@ -50,6 +50,11 @@ h2{font-size:18px;margin:34px 0 10px}
 .tag{font-size:12px;border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:var(--sub);background:#fafafa}
 .tag.blue{color:var(--accent);border-color:var(--accent-line);background:var(--accent-bg)}
 .tag.warn{color:var(--warn);border-color:var(--warn-line);background:var(--warn-bg)}
+.tag.v-cheap{color:#0a7a33;border-color:#9ad8af;background:#e9f8ef}
+.tag.v-fair{color:#8a6d00;border-color:#e6cf8a;background:#fbf4dd}
+.tag.v-pricey{color:#b42318;border-color:#f0b4ae;background:#fdecea}
+.line.sub{font-size:13px;margin-top:-4px}
+.line .warn{color:var(--warn)}
 .src{color:var(--mut);font-size:13px}
 .src a{margin-left:8px}
 details.lowsample{margin-top:14px}
