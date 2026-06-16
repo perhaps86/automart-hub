@@ -246,6 +246,43 @@
       (c.constraint_keywords || []).map((k) => [k]));
   }
 
+  /* ---------------- 나의입찰 (mybids) ---------------- */
+  function bidOutcomeBadge(o) {
+    const cls = o === "낙찰" ? "blue" : o === "패찰" ? "v-pricey" : "";
+    return `<span class="tag ${cls}">${esc(o || "기록")}</span>`;
+  }
+
+  function mybidItem(b) {
+    const parts = [];
+    if (b.min_bid != null) parts.push(`예정가 ${man(b.min_bid)}`);
+    if (b.encar_p10 != null || b.encar_median != null)
+      parts.push(`엔카 p10 ${man(b.encar_p10)} / 중앙 ${man(b.encar_median)}`);
+    if (b.my_bid != null) parts.push(`내 입찰 ${man(b.my_bid)}`);
+    if (b.winning_price != null) parts.push(`낙찰 ${man(b.winning_price)}`);
+    const head = [b.gen, b.model, b.year].filter((x) => x != null && x !== "").join(" ");
+    const links = [];
+    if (b.detail_url) links.push(`<a href="${esc(b.detail_url)}" target="_blank" rel="noopener">automart 상세</a>`);
+    if (b.encar_url) links.push(`<a href="${esc(b.encar_url)}" target="_blank" rel="noopener">엔카 시세</a>`);
+    return `<li><span class="date">${esc(b.date || "")}${b.notice ? " · " + esc(b.notice) : ""}</span>
+      <h3>${bidOutcomeBadge(b.outcome)} ${esc(head)}</h3>
+      <p class="line">${parts.join(" · ")}</p>
+      ${b.memo ? `<p class="line sub">📝 ${esc(b.memo)}</p>` : ""}
+      ${links.length ? `<p class="src">${links.join(" ")}</p>` : ""}</li>`;
+  }
+
+  function initBids() {
+    const d = D.mybids || {};
+    const items = d.items || [];
+    setMeta(items.length);
+    const note = $("#note");
+    if (note) {
+      if (d.note) { note.style.display = ""; note.textContent = "📌 " + d.note; }
+      else note.style.display = "none";
+    }
+    $("#list").innerHTML = items.map(mybidItem).join("") ||
+      `<li class="empty">아직 기록된 입찰이 없습니다 — my_bids.yaml에 추가됩니다</li>`;
+  }
+
   /* ---------------- 도움말 툴팁 (모바일 탭 토글) ---------------- */
   document.addEventListener("click", (e) => {
     const h = e.target.closest(".help");
@@ -262,7 +299,7 @@
   });
 
   /* ---------------- dispatch ---------------- */
-  const inits = { listings: initListings, results: initResults, stats: initStats, costs: initCosts };
+  const inits = { listings: initListings, results: initResults, stats: initStats, costs: initCosts, bids: initBids };
   const init = inits[document.body.dataset.page];
   if (init) {
     try { init(); } catch (e) {
