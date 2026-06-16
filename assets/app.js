@@ -252,6 +252,32 @@
     return `<span class="tag ${cls}">${esc(o || "기록")}</span>`;
   }
 
+  // 물건별 '내 메모' — localStorage(브라우저 단독, 서버/발행과 무관). 키=공고번호(없으면 날짜|모델).
+  const MEMO_PREFIX = "automart:mybid-memo:";
+  function memoKey(b) { return b.notice || `${b.date || ""}|${b.model || ""}`; }
+  function getMemo(key) {
+    try { return localStorage.getItem(MEMO_PREFIX + key) || ""; } catch (e) { return ""; }
+  }
+  function setMemo(key, val) {
+    try {
+      const v = (val || "").trim();
+      if (v) localStorage.setItem(MEMO_PREFIX + key, v);
+      else localStorage.removeItem(MEMO_PREFIX + key);   // 빈 메모 = 삭제
+    } catch (e) { /* 시크릿모드 등 저장 불가 — 조용히 무시 */ }
+  }
+  function memoInner(key, editing) {
+    const val = getMemo(key);
+    if (editing) {
+      return `<textarea class="memo-input" rows="2" placeholder="이 물건에 대한 내 메모">${esc(val)}</textarea>
+        <div class="memo-btns"><button type="button" class="memo-save">저장</button><button type="button" class="memo-cancel">취소</button></div>`;
+    }
+    if (val) {
+      return `<p class="memo-show">📝 <b>내 메모:</b> <span class="memo-text">${esc(val)}</span>` +
+        `<button type="button" class="memo-edit">수정</button><button type="button" class="memo-del">삭제</button></p>`;
+    }
+    return `<button type="button" class="memo-add">✏️ 내 메모 추가</button>`;
+  }
+
   function mybidItem(b) {
     const parts = [];
     if (b.min_bid != null) parts.push(`예정가 ${man(b.min_bid)}`);
@@ -263,10 +289,12 @@
     const links = [];
     if (b.detail_url) links.push(`<a href="${esc(b.detail_url)}" target="_blank" rel="noopener">automart 상세</a>`);
     if (b.encar_url) links.push(`<a href="${esc(b.encar_url)}" target="_blank" rel="noopener">엔카 시세</a>`);
+    const key = memoKey(b);
     return `<li><span class="date">${esc(b.date || "")}${b.notice ? " · " + esc(b.notice) : ""}</span>
       <h3>${bidOutcomeBadge(b.outcome)} ${esc(head)}</h3>
       <p class="line">${parts.join(" · ")}</p>
       ${b.memo ? `<p class="line sub">📝 ${esc(b.memo)}</p>` : ""}
+      <div class="usermemo" data-key="${esc(key)}">${memoInner(key, false)}</div>
       ${links.length ? `<p class="src">${links.join(" ")}</p>` : ""}</li>`;
   }
 
@@ -282,6 +310,29 @@
     $("#list").innerHTML = items.map(mybidItem).join("") ||
       `<li class="empty">아직 기록된 입찰이 없습니다 — my_bids.yaml에 추가됩니다</li>`;
   }
+
+  /* ---------------- 내 메모 추가/수정/삭제 (이벤트 위임) ---------------- */
+  document.addEventListener("click", (e) => {
+    const region = e.target.closest(".usermemo");
+    if (!region) return;
+    const key = region.dataset.key;
+    const show = (editing) => {
+      region.innerHTML = memoInner(key, editing);     // 같은 컨테이너 갱신 — 키 재조회 없음
+      if (editing) {
+        const ta = region.querySelector(".memo-input");
+        if (ta) { ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); }
+      }
+    };
+    if (e.target.closest(".memo-add") || e.target.closest(".memo-edit")) show(true);
+    else if (e.target.closest(".memo-cancel")) show(false);
+    else if (e.target.closest(".memo-save")) {
+      const ta = region.querySelector(".memo-input");
+      setMemo(key, ta ? ta.value : "");
+      show(false);
+    } else if (e.target.closest(".memo-del")) {
+      if (window.confirm("이 물건의 내 메모를 삭제할까요?")) { setMemo(key, ""); show(false); }
+    }
+  });
 
   /* ---------------- 도움말 툴팁 (모바일 탭 토글) ---------------- */
   document.addEventListener("click", (e) => {
