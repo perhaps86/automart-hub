@@ -20,7 +20,26 @@
   }
 
   /* ---------------- 진행중 (listings) ---------------- */
-  const LF = { group: "전체", seg: "전체", yr: "전체", disc15: false, noFlag: false, soon: false, q: "" };
+  const LF = { group: "전체", seg: "전체", yr: "전체", disc15: false, noFlag: false, soon: false, q: "", sort: "disc" };
+
+  // 정렬: 할인율순(disc, 기본 — publisher가 이미 할인순이나 토글 복귀 대비 명시 정렬) / 마감임박순(deadline, 임박 먼저)
+  function sortListings(arr) {
+    const a = arr.slice();
+    if (LF.sort === "deadline") {
+      a.sort((x, y) => {
+        const tx = x.deadline_iso ? Date.parse(x.deadline_iso) : Infinity;
+        const ty = y.deadline_iso ? Date.parse(y.deadline_iso) : Infinity;
+        return tx - ty;
+      });
+    } else {
+      a.sort((x, y) => {
+        const dx = x.discount_ref == null ? -Infinity : x.discount_ref;
+        const dy = y.discount_ref == null ? -Infinity : y.discount_ref;
+        return dy - dx;
+      });
+    }
+    return a;
+  }
 
   function listingVisible(it) {
     if (LF.group !== "전체") {
@@ -89,8 +108,8 @@
 
   function renderListings() {
     const all = (D.listings && D.listings.items) || [];
-    const vis = all.filter((i) => !i.low_sample).filter(listingVisible);
-    const low = all.filter((i) => i.low_sample).filter(listingVisible);
+    const vis = sortListings(all.filter((i) => !i.low_sample).filter(listingVisible));
+    const low = sortListings(all.filter((i) => i.low_sample).filter(listingVisible));
     $("#list").innerHTML = vis.map(listingItem).join("") ||
       `<li class="empty">조건에 맞는 매물이 없습니다</li>`;
     $("#count").textContent = `${vis.length}건`;
