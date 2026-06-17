@@ -59,7 +59,7 @@
       : `${it.year ?? ""} ${esc(it.model)} · 실구매할인 ${pct(it.discount_buy ?? it.discount_ref)}`;
     const line = it.low_sample
       ? `최저 ${man(it.min_bid)} · 시세중앙(참고) ${man(it.encar_median)}(표본 ${it.encar_count ?? 0}) · ${km(it.mileage_km)}`
-      : `최저 ${man(it.min_bid)} · 기준가(${esc(it.ref_label)}) ${man(it.ref_price)} · 입찰상한 ${man(it.bid_cap)} · ${km(it.mileage_km)}`;
+      : `최저 ${man(it.min_bid)} · 기준가(${esc(it.ref_label)}) ${man(it.ref_price)} · 보수가 ${man(it.bid_cap)} · 하드캡 ${man(it.hard_cap)} · ${km(it.mileage_km)}`;
     const costRows = Object.entries(it.cost_items || {})
       .map(([k, v]) => `<tr><td>${esc(k)}</td><td>${Number(v).toLocaleString()}원</td></tr>`).join("");
     const disc = it.discount_ref;
