@@ -56,7 +56,7 @@
       tags.push(`<span class="tag" title="${esc((it.repair_notes || []).join(" / "))}">수리비 +${man(it.repair_addon)}</span>`);
     const title = it.low_sample
       ? `${it.year ?? ""} ${esc(it.model)}`
-      : `${it.year ?? ""} ${esc(it.model)} · 할인 ${pct(it.discount_ref)}`;
+      : `${it.year ?? ""} ${esc(it.model)} · 실구매할인 ${pct(it.discount_buy ?? it.discount_ref)}`;
     const line = it.low_sample
       ? `최저 ${man(it.min_bid)} · 시세중앙(참고) ${man(it.encar_median)}(표본 ${it.encar_count ?? 0}) · ${km(it.mileage_km)}`
       : `최저 ${man(it.min_bid)} · 기준가(${esc(it.ref_label)}) ${man(it.ref_price)} · 입찰상한 ${man(it.bid_cap)} · ${km(it.mileage_km)}`;
@@ -70,9 +70,12 @@
         <tr class="sum"><td>부대비용 합계</td><td>${(it.cost_total ?? 0).toLocaleString()}원</td></tr>
         <tr class="sum"><td>총실구매비용</td><td>${(it.total_cost ?? 0).toLocaleString()}원</td></tr>
         ${it.ref_price ? `<tr><td>기준가(${esc(it.ref_label)})</td><td>${it.ref_price.toLocaleString()}원</td></tr>
-        <tr class="sum"><td>차익(기준가-총비용)</td><td>${(it.ref_price - (it.total_cost ?? 0)).toLocaleString()}원${disc != null ? ` (${Math.round(disc * 100)}%)` : ""}</td></tr>` : ""}
+        ${it.encar_buy_price ? `<tr><td>엔카 실구매가(+세금·정비)</td><td>${it.encar_buy_price.toLocaleString()}원</td></tr>
+        <tr class="sum"><td>실구매 차익(엔카실구매가-총비용)</td><td>${(it.encar_buy_price - (it.total_cost ?? 0)).toLocaleString()}원${it.discount_buy != null ? ` (${Math.round(it.discount_buy * 100)}%)` : ""}</td></tr>`
+        : `<tr class="sum"><td>차익(기준가-총비용)</td><td>${(it.ref_price - (it.total_cost ?? 0)).toLocaleString()}원${disc != null ? ` (${Math.round(disc * 100)}%)` : ""}</td></tr>`}` : ""}
       </tbody></table>
       ${(it.cost_notes || []).map((n) => `<p class="note">※ ${esc(n)}</p>`).join("")}
+      <p class="note">※ 엔카 실구매가 = 엔카 차값 + 취득세·공채·이전·정비(엔카로 사도 드는 공통비용). 진짜 할인 = 이 대비 총비용.</p>
       <p class="note">※ 부대비용은 간이 추정 — 정확한 수치는 엑셀에서 항목 수정 가능</p>
     </div>`;
     return `<li><span class="date">${esc(it.deadline || "마감 미상")}</span>
