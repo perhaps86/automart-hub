@@ -20,7 +20,11 @@
   }
 
   /* ---------------- 진행중 (listings) ---------------- */
-  const LF = { group: "전체", seg: "전체", yr: "전체", disc15: false, noFlag: false, soon: false, q: "", sort: "disc" };
+  const LF = { group: "전체", seg: "전체", yr: "전체", disc15: false, noFlag: false, soon: false, conv: false, q: "", sort: "disc" };
+
+  // 차체=컨버터블 판정 — 발행 데이터의 body_convertible(명시) 우선, 구버전 데이터는 trim_label로 폴백
+  const isConvertible = (it) =>
+    it.body_convertible === true || /컨버터블|카브리올|로드스터/.test(it.trim_label || "");
 
   // 정렬: 할인율순(disc, 기본 — publisher가 이미 할인순이나 토글 복귀 대비 명시 정렬) / 마감임박순(deadline, 임박 먼저)
   function sortListings(arr) {
@@ -59,6 +63,7 @@
       const left = new Date(it.deadline_iso).getTime() - Date.now();
       if (left < 0 || left > 86400000) return false;
     }
+    if (LF.conv && !isConvertible(it)) return false;
     if (LF.q && !`${it.model || ""} ${it.trim_label || ""}`.toLowerCase().includes(LF.q)) return false;
     return true;
   }
