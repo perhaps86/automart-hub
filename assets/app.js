@@ -108,6 +108,7 @@
       <p class="src">${esc(it.region || "")}
         <a href="${esc(it.detail_url)}" target="_blank" rel="noopener">automart 상세</a>${
         it.encar_url ? ` <a href="${esc(it.encar_url)}" target="_blank" rel="noopener">엔카 시세${it.encar_count ? `(${it.encar_count}대)` : ""}</a>` : ""}
+        <a class="bidreviewlink" data-url="${esc(it.detail_url)}">입찰검토</a>
         <a class="costlink">비용내역</a></p>${costBox}</li>`;
   }
 
@@ -366,6 +367,38 @@
     const h = e.target.closest(".help");
     document.querySelectorAll(".help.open").forEach((x) => { if (x !== h) x.classList.remove("open"); });
     if (h) h.classList.toggle("open");
+  });
+
+  /* ---------------- 입찰검토 패키지 (로컬 헬퍼 호출) ---------------- */
+  // 포트는 config.yaml의 bidreview.server_port 기본값(8918)과 일치해야 한다.
+  const BIDREVIEW_HELPER = "http://127.0.0.1:8918";
+
+  document.addEventListener("click", async (e) => {
+    const l = e.target.closest(".bidreviewlink");
+    if (!l) return;
+    const url = l.dataset.url;
+    const orig = l.textContent;
+    l.textContent = "생성 중...";
+    try {
+      const res = await fetch(`${BIDREVIEW_HELPER}/bidreview?url=${encodeURIComponent(url)}`);
+      const body = await res.json();
+      if (body.ok) {
+        l.textContent = "패키지 생성됨 - 탐색기 확인";
+        setTimeout(() => { l.textContent = orig; }, 6000);
+        return;
+      }
+      l.textContent = orig;
+      alert(`패키지 생성 실패: ${body.error || "알 수 없는 오류"}`);
+    } catch (err) {
+      l.textContent = orig;
+      const cmd = `python -m automart_compare.bidreview_pack "${url}"`;
+      try { await navigator.clipboard.writeText(cmd); } catch (e2) { /* 무시 */ }
+      alert(
+        "로컬 헬퍼에 연결할 수 없습니다.\n\n" +
+        "PC에서 헬퍼를 실행한 뒤 다시 클릭하세요:\n" +
+        "  python -m automart_compare.bidreview_server\n\n" +
+        `또는 1회 생성 명령(클립보드에 복사됨):\n  ${cmd}`);
+    }
   });
 
   /* ---------------- 비용내역 펼침 ---------------- */
