@@ -37,8 +37,8 @@
       });
     } else {
       a.sort((x, y) => {
-        const dx = x.discount_ref == null ? -Infinity : x.discount_ref;
-        const dy = y.discount_ref == null ? -Infinity : y.discount_ref;
+        const dx = x.discount_buy == null ? -Infinity : x.discount_buy;
+        const dy = y.discount_buy == null ? -Infinity : y.discount_buy;
         return dy - dx;
       });
     }
@@ -56,7 +56,7 @@
       const g = YEAR_GROUPS[LF.yr];
       if (it.year == null || it.year < g[0] || it.year > g[1]) return false;
     }
-    if (LF.disc15 && !(it.discount_ref >= 0.15)) return false;
+    if (LF.disc15 && !(it.discount_buy >= 0.15)) return false;
     if (LF.noFlag && (it.constraint_flags || []).length) return false;
     if (LF.soon) {
       if (!it.deadline_iso) return false;
@@ -80,7 +80,7 @@
       tags.push(`<span class="tag" title="${esc((it.repair_notes || []).join(" / "))}">수리비 +${man(it.repair_addon)}</span>`);
     const title = it.low_sample
       ? `${it.year ?? ""} ${esc(it.model)}`
-      : `${it.year ?? ""} ${esc(it.model)} · 실구매할인 ${pct(it.discount_buy ?? it.discount_ref)}`;
+      : `${it.year ?? ""} ${esc(it.model)} · 실구매할인 ${pct(it.discount_buy)}`;
     const line = it.low_sample
       ? `최저 ${man(it.min_bid)} · 시세중앙(참고) ${man(it.encar_median)}(표본 ${it.encar_count ?? 0}) · ${km(it.mileage_km)}`
       : `최저 ${man(it.min_bid)} · 기준가(${esc(it.ref_label)}) ${man(it.ref_price)} · 보수가 ${man(it.bid_cap)} · 하드캡 ${man(it.hard_cap)} · ${km(it.mileage_km)}`;
@@ -195,6 +195,35 @@
     $("#list").innerHTML = vis.map(resultItem).join("") ||
       `<li class="empty">아직 수집된 결과가 없습니다 — 매일 알림이 쌓아갑니다</li>`;
     $("#count").textContent = `${vis.length}건`;
+  }
+
+  // 낙찰 할인율 데이터셋 — retail 실구매가 대비 낙찰 총비용 할인율(주행·수리·인기 기준 같이 표시)
+  function renderDiscount() {
+    const d = D.discount || {};
+    const noteEl = $("#disc-note");
+    if (noteEl) noteEl.textContent = d.note ? "※ " + d.note : "";
+    const el = $("#disc-table");
+    if (!el) return;
+    const rows = d.items || [];
+    if (!rows.length) { el.innerHTML = ""; return; }
+    const head = ["차량", "연식", "주행", "상태(주행·수리·수요)", "retail 실구매가", "낙찰 총비용", "할인율", "입찰자"];
+    const body = rows.map((r) => {
+      const disc = (r.retail_buy && r.winning_total) ? 1 - r.winning_total / r.retail_buy : null;
+      const discTxt = disc == null
+        ? '<span class="mut">결과대기</span>'
+        : `<b class="${disc >= 0.15 ? "hi" : ""}">${Math.round(disc * 100)}%</b>`;
+      return `<tr>
+        <td class="l">${esc(r.car)}</td>
+        <td>${r.year ?? "-"}</td>
+        <td>${km(r.mileage_km)}</td>
+        <td class="l">${esc(r.note || "")}</td>
+        <td>${man(r.retail_buy)}</td>
+        <td>${r.winning_total ? man(r.winning_total) : "-"}</td>
+        <td>${discTxt}</td>
+        <td>${r.bidders ?? "-"}</td>
+      </tr>`;
+    }).join("");
+    el.innerHTML = `<thead><tr>${head.map((h) => `<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${body}</tbody>`;
   }
 
   function initResults() {
@@ -330,6 +359,7 @@
     const d = D.mybids || {};
     const items = d.items || [];
     setMeta(items.length);
+    renderDiscount();   // 할인율 데이터셋 표(입찰결과→나의입찰 이동)
     const note = $("#note");
     if (note) {
       if (d.note) { note.style.display = ""; note.textContent = "📌 " + d.note; }

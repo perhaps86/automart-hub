@@ -106,6 +106,19 @@ td:first-child,th:first-child{text-align:left}
 .costbox tr.sum td{font-weight:700;background:#f8fafc}
 .costbox .note{color:var(--mut);font-size:12px;margin:6px 0 0}
 
+/* 낙찰 할인율 데이터셋 토글 (입찰결과 상단) */
+.disctoggle{margin:0 0 22px;border:1px solid var(--line);border-radius:10px;padding:6px 12px;background:#fcfdff}
+.disctoggle summary{cursor:pointer;color:var(--accent);font-size:14px;font-weight:700;padding:6px 0;list-style:none}
+.disctoggle summary::-webkit-details-marker{display:none}
+.disctoggle summary::before{content:"▸ "}
+.disctoggle[open] summary::before{content:"▾ "}
+.disc-note{color:var(--mut);font-size:12px;margin:2px 0 6px}
+.disc-scroll{overflow-x:auto}
+.disctoggle table{font-size:13px;min-width:600px;margin:4px 0 6px}
+.disctoggle td.l{text-align:left}
+.disctoggle .mut{color:var(--mut)}
+.disctoggle b.hi{color:#0a7a33}
+
 /* 도움말 툴팁 (?) — PC 호버 + 모바일 탭(클릭 토글) */
 .help{position:relative;display:inline-flex;align-items:center;justify-content:center;
       width:16px;height:16px;margin:0 2px;padding:0;border:1px solid var(--accent-line);
