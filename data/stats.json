@@ -1,8 +1,8 @@
 {
- "won": 889,
- "passed": 964,
- "ratio_median": 0.753578969429191,
- "bidders_avg": 11.5,
+ "won": 926,
+ "passed": 1017,
+ "ratio_median": 0.7527169636658181,
+ "bidders_avg": 11.2,
  "monthly": [
   {
    "label": "2026-06",
@@ -21,117 +21,117 @@
   },
   {
    "label": "2026-10",
-   "won": 234,
-   "passed": 275
+   "won": 271,
+   "passed": 328
   }
  ],
  "bands": [
   {
    "label": "10%미만",
-   "won": 43,
-   "passed": 191
+   "won": 44,
+   "passed": 204
   },
   {
    "label": "10~20%",
-   "won": 75,
-   "passed": 197
+   "won": 80,
+   "passed": 205
   },
   {
    "label": "20~30%",
-   "won": 149,
-   "passed": 251
+   "won": 158,
+   "passed": 263
   },
   {
    "label": "30%이상",
-   "won": 476,
-   "passed": 305
+   "won": 497,
+   "passed": 325
   }
  ],
  "year_bands": [
   {
    "label": "2022↑",
-   "sample": 413,
+   "sample": 449,
    "bands": [
     {
      "label": "10%미만",
-     "won": 29,
-     "passed": 48
+     "won": 30,
+     "passed": 56
     },
     {
      "label": "10~20%",
-     "won": 50,
-     "passed": 57
+     "won": 55,
+     "passed": 61
     },
     {
      "label": "20~30%",
-     "won": 86,
-     "passed": 39
+     "won": 89,
+     "passed": 42
     },
     {
      "label": "30%이상",
-     "won": 81,
-     "passed": 23
+     "won": 92,
+     "passed": 24
     }
    ],
-   "disc_median": 0.215
+   "disc_median": 0.214
   },
   {
    "label": "2018~2021",
-   "sample": 352,
+   "sample": 366,
    "bands": [
     {
      "label": "10%미만",
      "won": 4,
-     "passed": 50
+     "passed": 51
     },
     {
      "label": "10~20%",
      "won": 13,
-     "passed": 44
+     "passed": 45
     },
     {
      "label": "20~30%",
-     "won": 35,
-     "passed": 44
+     "won": 38,
+     "passed": 46
     },
     {
      "label": "30%이상",
-     "won": 128,
-     "passed": 34
+     "won": 130,
+     "passed": 39
     }
    ],
    "disc_median": 0.28
   },
   {
    "label": "2013~2017",
-   "sample": 706,
+   "sample": 740,
    "bands": [
     {
      "label": "10%미만",
      "won": 9,
-     "passed": 78
+     "passed": 82
     },
     {
      "label": "10~20%",
      "won": 10,
-     "passed": 82
+     "passed": 84
     },
     {
      "label": "20~30%",
-     "won": 27,
-     "passed": 135
+     "won": 30,
+     "passed": 142
     },
     {
      "label": "30%이상",
-     "won": 198,
-     "passed": 167
+     "won": 204,
+     "passed": 179
     }
    ],
    "disc_median": 0.305
   },
   {
    "label": "2012↓",
-   "sample": 216,
+   "sample": 221,
    "bands": [
     {
      "label": "10%미만",
@@ -141,7 +141,7 @@
     {
      "label": "10~20%",
      "won": 2,
-     "passed": 14
+     "passed": 15
     },
     {
      "label": "20~30%",
@@ -150,13 +150,13 @@
     },
     {
      "label": "30%이상",
-     "won": 69,
-     "passed": 81
+     "won": 71,
+     "passed": 83
     }
    ],
    "disc_median": 0.397
   }
  ],
- "sample": 1853,
+ "sample": 1943,
  "insufficient": false
 }
