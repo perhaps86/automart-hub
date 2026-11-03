@@ -1,1 +1,1 @@
-window.HUB_DATA=window.HUB_DATA||{};window.HUB_DATA.meta={"generated_at": "2026-11-03 08:21", "listings_count": 207, "results_count": 3056};
+window.HUB_DATA=window.HUB_DATA||{};window.HUB_DATA.meta={"generated_at": "2026-11-04 08:27", "listings_count": 245, "results_count": 3138};
